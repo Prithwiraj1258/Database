@@ -1,0 +1,15 @@
+use dummydb;
+WITH AVGIT AS(
+select avg(salary) AS SAL1 -- AMRA TABLE ER SATHE ATTRIBUTE COMPARE KORTE PARI NA TAI
+-- ATTRIBUTE BER KORE ANAR JONNO SAL1 DECLARE KORECHI
+from employees
+where department_id =60
+),-- IT
+ MAXMKT AS(
+select max(salary) AS SAL2
+from employees
+where department_id =20 #MARKETING 
+)
+select *
+from  employees
+where salary > (select SAL1 FROM AVGIT)  AND SALARY<(SELECT SAL2 FROM MARKET);
